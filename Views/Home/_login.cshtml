@@ -1,0 +1,17 @@
+@model LogUser
+
+<form action="/login" method="post">
+        <div class="form-group">
+            <label for="lemail">Email</label>
+            <input asp-for="lemail" class="form-control">
+            <span asp-validation-for="lemail" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="lpassword">Password</label>
+            <input asp-for="lpassword" class="form-control">
+            <span asp-validation-for="lpassword" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Login" class="btn btn-info">
+        </div>
+    </form>

@@ -1,0 +1,49 @@
+@model User
+
+<h1>Welcome to the Wedding Planner</h1>
+<div class="col-6">
+    <table class="table table-striped">
+        <tr>
+            <th>Wedding</th>
+            <th>Date</th>
+            <th>Guest</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            @{
+                foreach(Wedding w in ViewBag.AllWeddings)
+                {
+                    <tr>
+                        <td><a href="/oneWedding/@w.WeddingId">@w.WedderOne & @w.WedderTwo</a></td>
+                        <td>@w.Date</td>
+                        <td>@w.GuestList.Count</td>
+                        @* this will be a user count in the GuestList of wedding model *@
+                        <td>
+                            @{  
+                                if(w.UserId == ViewBag.LoggedInUser.UserId)
+                                {
+                                    <a href="/delete/@w.WeddingId">delete</a>
+                                }
+                                if(w.GuestList.Any(i => i.UserId == ViewBag.LoggedInUser.UserId))
+                                {
+                                    <a href="/unRSVP/@w.WeddingId/@ViewBag.LoggedInUser.UserId">unRSVP</a>
+                                }     
+                                else{
+                                    <a href="/RSVP/@w.WeddingId/@ViewBag.LoggedInUser.UserId">RSVP</a>                                
+                                    }
+                            }
+                            
+                            
+                        </td>
+                        @* this will be a partial that creates a form similar to the form for products and categories that adds a user to GuestList*@
+                        @* it will also have an if statement similar to if statement in products and categories and if the user is already in GuestList, then they have the option to Remove  *@
+                        @* the rsvp or unrsvp will be done in a tags that will go to a function in homecontroller *@
+                        @* if statement leads to partial with form(similar to form from products and categories), and else leads to a tag for delete(delicous) where we are adding to Reservation newReservation  *@
+                    </tr>
+                }
+            }
+        </tr>
+    </table>
+    <a href="/newWedding" class="btn btn-primary">New Wedding</a><br>
+    <a href="/logout">Logout</a>
+</div>

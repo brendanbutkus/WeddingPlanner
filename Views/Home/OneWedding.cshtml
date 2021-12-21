@@ -1,0 +1,17 @@
+@model Wedding
+
+<h1>@Model.WedderOne and @Model.WedderTwo</h1>
+<h2>Date: @Model.Date</h2>
+
+<div class="col-6">
+<h2>Guests</h2>
+@{
+    foreach(Reservation r in Model.GuestList)
+                {
+                    <li>@r.User.FirstName @r.User.LastName</li>
+                }
+}
+
+    <a href="/Dashboard" class="btn btn-primary">Dashboard</a><br>
+    <a href="/logout">Logout</a>
+</div>

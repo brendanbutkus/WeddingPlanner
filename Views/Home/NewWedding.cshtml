@@ -1,0 +1,29 @@
+@model Wedding
+<div class="col-6">
+    <h1>Plan Your Wedding</h1>
+    <form action="/createWedding" method="post">
+        <div class="form-group">
+            <label for="WedderOne">Wedder One</label>
+            <input asp-for="WedderOne" class="form-control">
+            <span asp-validation-for="WedderOne" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="WedderTwo">Wedder Two</label>
+            <input asp-for="WedderTwo" class="form-control">
+            <span asp-validation-for="WedderTwo" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="Date">Date</label>
+            <input type="date" asp-for="Date" class="form-control">
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="WeddingAddress">Wedding Address</label>
+            <input asp-for="WeddingAddress" class="form-control">
+            <span asp-validation-for="WeddingAddress" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-info">
+        </div>
+    </form>
+    </div>
